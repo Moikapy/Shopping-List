@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Basic Vue Shopping List</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="./style.css">
+    </head>
+
+    <body>
+        <div id="app">
+            <div class="header">
+                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <button 
+                v-if="state === 'default'" 
+                @click="changeState('edit')"
+                class="btn btn-primary">Add Item</button>
+
+                <button v-else
+                 @click="changeState('default')"
+                class="btn btn-cancel">Cancel</button>
+            </div>
+            
+            <div v-if="state === 'edit'" class="add-item-form">
+                <input 
+                type="text" 
+                v-model="newItem"
+                placeholder="Add an item"
+                @keyup.enter="saveItem">
+
+                <p> {{ characterCount }}/200 </p>
+
+                <button 
+                class="btn btn-primary"
+                :disabled="newItem.length === 0"
+                @click="saveItem">Save Items</button>
+            </div>
+
+            <ul>
+                <li 
+                v-for="item in items" 
+                @click="togglePurchased(item)"
+                :class="[item.purchased ? 'strikeout' : '', item.highPriority ? 'priority' : '']">{{ item.label }}</li>
+            </ul>
+            <p v-if="items.length === 0">Press Add Items to get started!</p>
+        </div>
+
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <script>
+        
+            var vm = new Vue ({
+                el: '#app',
+                data:{
+                    state: "default",
+                    header: "Shopping List APP",
+                    newItem: "",
+                    items: [
+
+                    ]
+                },
+                computed:{
+                    characterCount(){
+                        return this.newItem.length;
+                    }
+                },
+                methods: {
+                    saveItem: function(){
+                        this.items.push({
+                            label: this.newItem,
+                            purchased: 0
+                        });
+                        this.newItem = "";
+                    },
+                    changeState: function (newState) {
+                        this.state = newState;
+                        
+                        this.newItem = "";
+                    },
+                    togglePurchased: function(item){
+                        item.purchased = !item.purchased;
+                    }
+                }
+            });
+        
+        </script>
+    </body>
+
+</html>
