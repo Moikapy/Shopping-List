@@ -24,10 +24,6 @@ h1 {
     color: #3D4852;
 }
 
-ol {
-    padding: 0;
-}
-
 a {
     color: #6CB2EB;
     font-size: 1.25rem;
@@ -137,4 +133,12 @@ li input {
 
 .strikeout:hover {
     color: #8795A1;
+}
+.list-group{
+    list-style-type: square;
+}
+.list-item{
+    list-style-type: square;
+    word-break: break-all;
+    line-height: 1.2;
 }
