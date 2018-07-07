@@ -4,6 +4,7 @@
     <head>
         <title>The Shopping List</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <link rel="stylesheet" href="./style.css">
         <!-- Adsense -->
@@ -59,13 +60,13 @@
                     class="list-item m-1" 
                     v-for="item in items" 
                     @click="togglePurchased(item)"
-                    :class="[item.purchased ? 'strikeout' : '']">{{ item.label }}</li>
+                    :class="[item.purchased ? 'strikeout' : '']">{{ item.label }} <i @click="removeItem(item)" class="ml-5 fas fa-times-circle"></i></li>
                 </ol>
             </div>
         </div>
 
-        <!-- <script src="https://unpkg.com/vue/dist/vue.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://unpkg.com/vue/dist/vue.js"></script>
+        <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
         <script>
         
             var vm = new Vue ({
@@ -96,6 +97,9 @@
                     },
                     togglePurchased: function(item){
                         item.purchased = !item.purchased;
+                    },
+                    removeItem: function (item) {
+                        this.items.splice(item, 1);
                     }
                 }
             });
