@@ -24,8 +24,7 @@ h1 {
     color: #3D4852;
 }
 
-ul {
-    list-style: none;
+ol {
     padding: 0;
 }
 
@@ -138,8 +137,4 @@ li input {
 
 .strikeout:hover {
     color: #8795A1;
-}
-
-.priority {
-    color: #DE751F;
 }
