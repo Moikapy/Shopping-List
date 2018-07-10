@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
-        <title>The Shopping List</title>
+        <title>The List App</title>
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+        <!-- BOOTSTRAP -->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+        <!-- THE LIST STYLE -->
         <link rel="stylesheet" href="./src/style.css">
+        <!-- VUE -->
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
         <!-- Adsense -->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -19,10 +23,15 @@
 
     <body>
         <div id="app">
+            <!-- HEADER -->
             <div class="header d-flex flex-column text-center mb-4">
-                <h1>{{ header.toLocaleUpperCase() }}</h1>
+                <h1>{{ title.toLocaleUpperCase() }}</h1>
+                <a :href="github" class="fnt-c-i">
+                    <i class="fab fa-github fnt-s-icon fnt-c-i"></i>
+                </a>
                 <p v-if="items.length === 0">Press Add Items to get started!</p>
             </div>
+            <!-- BUTTONS -->
             <div class="text-center mb-5">
                 <button
                 v-if="state === 'edit'" 
@@ -41,6 +50,7 @@
                 @click="resetList(items)"
                 class="btn btn-warning">Reset All</button> -->
             </div>
+            <!-- INPUT -->
             <div 
             class="mt-5 mb-5"
             v-if="state === 'edit'">
@@ -57,7 +67,7 @@
                     <p class="ml-2 m-1"> {{ characterCount }}/100 </p>
                 </div>
             </div>
-
+            <!-- LIST -->
             <div class="d-block">
                 <ol class="list-group">
                     <li
@@ -68,10 +78,7 @@
                 </ol>
             </div>
         </div>
-
-        <script src="https://unpkg.com/vue/dist/vue.js"></script>
-        <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
+        <!-- JS -->
         <script src="./src/main.js"></script>
     </body>
-
 </html>

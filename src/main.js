@@ -2,8 +2,9 @@ var app = new Vue ({
     el: '#app',
     data:{
         state: "default",
-        header: "The List APP",
-        newItem: "",
+        title: "The List APP",
+        newItem: "", 
+        github: "https://github.com/Moikapy/Shopping-List",
         items: []
     },
     mounted() {
