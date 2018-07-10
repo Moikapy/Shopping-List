@@ -1,3 +1,9 @@
+#element::-webkit-scrollbar { 
+    display: none; 
+}
+::-webkit-scrollbar { 
+    display: none; 
+}
 body {
     background: #EFF8FF;
     height: 100vh;
@@ -8,6 +14,7 @@ body {
     justify-content: center;
     margin: 0;
     padding: 0;
+    min-height: 800px;
 }
 
 #app {
@@ -136,6 +143,12 @@ li input {
 }
 .list-group{
     list-style-type: square;
+    max-height: 500px;
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+.list-group::-webkit-scrollbar { 
+    display: none; 
 }
 .list-item{
     list-style-type: square;
@@ -146,5 +159,5 @@ li input {
     color: #000;
 }
 .fnt-s-i{
-    font-size: 7px;
+    font-size: 35px;
 }

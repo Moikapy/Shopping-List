@@ -49,10 +49,11 @@ var app = new Vue ({
             this.$delete(this.items, index);
         },
 
-        // resetList: function() {
-        //     while (this.items > 0) {
-        //         this.$delete(this.items, index);
-        //     }
-        // }
+        resetList: function(index) {
+            while (index > 0){
+                this.$delete(this.items, index);
+            }
+            
+        }
     }
 });
