@@ -142,3 +142,9 @@ li input {
     word-break: break-all;
     line-height: 1.2;
 }
+.fnt-c-i{
+    color: #000;
+}
+.fnt-s-i{
+    font-size: 7px;
+}
