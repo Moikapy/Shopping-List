@@ -6,7 +6,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        <link rel="stylesheet" href="./style.css">
+        <link rel="stylesheet" href="./src/style.css">
         <!-- Adsense -->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -37,6 +37,9 @@
                 <button v-else
                 @click="changeState('default')"
                 class="btn btn-cancel">Cancel</button>
+                <!-- <button v-if="state === 'edit'"
+                @click="resetList(items)"
+                class="btn btn-warning">Reset All</button> -->
             </div>
             <div 
             class="mt-5 mb-5"
@@ -68,46 +71,7 @@
 
         <script src="https://unpkg.com/vue/dist/vue.js"></script>
         <!-- <script src="https://cdn.jsdelivr.net/npm/vue"></script> -->
-        <script>
-        
-            var vm = new Vue ({
-                el: '#app',
-                data:{
-                    state: "default",
-                    header: "The Shopping List APP",
-                    newItem: "",
-                    items: []
-                },
-                computed:{
-                    characterCount(){
-                        return this.newItem.length;
-                    }
-                },
-                methods: {
-                    saveItem: function(newItem){
-                        if (this.newItem.length > 0){
-                            this.items.push({
-                                label: this.newItem,
-                                purchased: 0
-                            });
-                            this.newItem = "";
-                        }
-                    },
-                    changeState: function (newState) {
-                        this.state = newState;
-                        
-                        this.newItem = "";
-                    },
-                    togglePurchased: function(item){
-                        item.purchased = !item.purchased;
-                    },
-                    removeItem: function (index) {
-                        this.$delete(this.items, index);
-                    }
-                }
-            });
-        
-        </script>
+        <script src="./src/main.js"></script>
     </body>
 
 </html>
