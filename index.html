@@ -5,12 +5,12 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <!-- FONT AWESOME -->
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
-        <!-- BOOTSTRAP -->
+        <!-- BOOTSTRAP CSS-->
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
         <!-- THE LIST STYLE -->
         <link rel="stylesheet" href="./src/style.css">
         <!-- VUE -->
-        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
         <!-- Adsense -->
         <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
         <script>
@@ -26,30 +26,15 @@
             <!-- HEADER -->
             <div class="header d-flex flex-column text-center mb-4">
                 <h1>{{ title.toLocaleUpperCase() }}</h1>
-                <a :href="github" class="fnt-c-i">
-                    <i class="fab fa-github fnt-s-icon fnt-c-i"></i>
-                </a>
+                <div class="pt-2 pb-3">
+                    <a :href="github" target="_blank" class="fnt-c-i">
+                        <i class="fab fa-github fnt-s-i fnt-c-i"></i>
+                    </a>
+                </div>
+
                 <p v-if="items.length === 0">Press Add Items to get started!</p>
             </div>
-            <!-- BUTTONS -->
-            <div class="text-center mb-5">
-                <button
-                v-if="state === 'edit'" 
-                class="btn btn-primary"
-                :disabled="newItem.length === 0"
-                @click="saveItem">Save Items</button>
-                <button 
-                v-if="state === 'default'" 
-                @click="changeState('edit')"
-                class="btn btn-primary">Add Item</button>
 
-                <button v-else
-                @click="changeState('default')"
-                class="btn btn-cancel">Cancel</button>
-                <!-- <button v-if="state === 'edit'"
-                @click="resetList(items)"
-                class="btn btn-warning">Reset All</button> -->
-            </div>
             <!-- INPUT -->
             <div 
             class="mt-5 mb-5"
@@ -67,14 +52,35 @@
                     <p class="ml-2 m-1"> {{ characterCount }}/100 </p>
                 </div>
             </div>
+            <!-- BUTTONS -->
+            <div class="text-center mb-5">
+                <button
+                v-if="state === 'edit'" 
+                class="btn btn-primary"
+                :disabled="newItem.length === 0"
+                @click="saveItem">Save Items</button>
+
+                <button 
+                v-if="state === 'default'" 
+                @click="changeState('edit')"
+                class="btn btn-primary">Add Items</button>
+
+                <button v-else
+                @click="changeState('default')"
+                class="btn btn-cancel">Cancel</button>
+                <button v-if="state === 'edit'" 
+                @click="resetList(items,index)"
+                type reset
+                class="btn btn-warning">Reset All</button>
+            </div>
             <!-- LIST -->
             <div class="d-block">
                 <ol class="list-group">
                     <li
-                    class="list-item m-1" 
+                    class="list-item m-1 w-100" 
                     v-for="(item, index) in items" 
                     @click="togglePurchased(item)"
-                    :class="[item.purchased ? 'strikeout' : '']">{{ item.label }} <i @click="removeItem(index)" class="ml-5 fas fa-times-circle no-strikeout"></i></li>
+                    :class="[item.purchased ? 'strikeout' : '']">{{ item.label }} <i @click="removeItem(index)" class="ml-5 fas fa-times-circle "></i></li>
                 </ol>
             </div>
         </div>
