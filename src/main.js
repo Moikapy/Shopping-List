@@ -1,5 +1,5 @@
 var app = new Vue ({
-    el: '#app',
+    el: "#app",
     data:{
         state: "default",
         title: "The List APP",
@@ -8,16 +8,16 @@ var app = new Vue ({
         items: []
     },
     mounted() {
-        console.log('3');
-        console.log('2');
-        console.log('1');
-        console.log('Fight!');
-        if (localStorage.getItem('items')) this.items = JSON.parse(localStorage.getItem('items'));
+        console.log("3");
+        console.log("2");
+        console.log("1");
+        console.log("Fight!");
+        if (localStorage.getItem("items")) this.items = JSON.parse(localStorage.getItem("items"));
     },
     watch: {
         items: {
             handler() {
-                localStorage.setItem('items', JSON.stringify(this.items));
+                localStorage.setItem("items", JSON.stringify(this.items));
             },
             deep: true,
         }
@@ -28,7 +28,7 @@ var app = new Vue ({
         }
     },
     methods: {
-        saveItem: function(newItem){
+        saveItem (newItem){
             if (this.newItem.length > 0){
                 this.items.push({
                     label: this.newItem,
@@ -37,19 +37,19 @@ var app = new Vue ({
                 this.newItem = "";
             }
         },
-        changeState: function (newState) {
+        changeState (newState) {
             this.state = newState;
             
             this.newItem = "";
         },
-        togglePurchased: function(item){
+        togglePurchased (item){
             item.purchased = !item.purchased;
         },
-        removeItem: function (index) {
+        removeItem (index) {
             this.$delete(this.items, index);
         },
 
-        resetList: function(index) {
+        resetList (index) {
             while (index > 0){
                 this.$delete(this.items, index);
             }
