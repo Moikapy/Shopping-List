@@ -8,11 +8,7 @@ var app = new Vue ({
         items: []
     },
     mounted() {
-        console.log("3");
-        console.log("2");
-        console.log("1");
-        console.log("Fight!");
-        if (localStorage.getItem("items")) this.items = JSON.parse(localStorage.getItem("items"));
+        if (localStorage.getItem("items")){this.items = JSON.parse(localStorage.getItem("items"));}
     },
     watch: {
         items: {
